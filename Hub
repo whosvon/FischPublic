@@ -37,9 +37,13 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("Main", 4483362458) -- Title, Image
 local Tab = Window:CreateTab("Creds", 4483362458) -- Title, Image
 
+local HttpService = game:GetService("HttpService")
+
 local Button = MainTab:CreateButton({
    Name = "Load Fisch",
    Callback = function()
-   loadstring(game:HttpGet("LINK"))()
+       local scriptContent = HttpService:GetAsync("https://raw.githubusercontent.com/whosvon/FischPublic/refs/heads/main/loader")
+       loadstring(scriptContent)()
    end,
 })
+
